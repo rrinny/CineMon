@@ -27,6 +27,38 @@ CineMon은 영화관 근무자를 위한 **스케줄 관리 및 급여 계산 �
 
 ---
 
+## 팀원 소개
+  <table width="100%">
+    <tr>
+      <td align="center">
+        <a href="https://github.com/sonyewoen">
+          <img src="https://github.com/sonyewoen.png" width="100px" alt="손예원"/><br />
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/rrinny">
+          <img src="https://github.com/rrinny.png" width="100px" alt="박채린"/><br />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">손예원</td>
+      <td align="center">박채린</td>
+    </tr>
+    <tr>
+      <td align="center">
+        <p>UI/UX 설계 및 화면 구현</p>
+        <p>데이터 시각화</p>
+      </td>
+      <td align="center">
+        <p>DB 설계 및 로직 구현</p>
+        <p>공휴일 API 연동·캐싱</p>
+      </td>
+    </tr>
+  </table>
+  
+---
+
 ## 핵심 기능
 
 1. **스케줄 관리 시스템**
