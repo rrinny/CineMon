@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- oringe.main (#fe6301ff) -->
+    <color name="gc_orange_main">#FFFE6301</color>
+    <!-- oringe.sub (#fffcf3ff) -->
+    <color name="gc_orange_sub">#FFFFFCF3</color>
+    <!-- oringe.main50 (#fe630180) -->
+    <color name="gc_orange_main_50">#FEB180</color>
+    <!-- oringe.main40 (#fe630166) -->
+    <color name="gc_orange_main_40">#FFC199</color>
+    <!-- oringe.main20 (#fe630133) -->
+    <color name="gc_orange_main_20">#FFDDC3</color>
+
+    <!-- black -->
+    <color name="gc_black_10">#FFF5F5F5</color>
+    <color name="gc_black_20">#FFD6D6D6</color>
+    <color name="gc_black_40">#FFAAAAAA</color>
+    <color name="gc_black_50">#FF777777</color>
+    <color name="gc_black_70">#FF444444</color>
+    <color name="gc_black_90">#FF222222</color>
+
+    <!-- blue -->
+    <color name="gc_blue_public">#FF0073FF</color>
+    <color name="gc_blue_public_50">#80B9FF</color>
+    <color name="gc_blue_public_20">#CCE1F5</color>
+
+    <!-- green -->
+    <color name="gc_green_sub">#FF06AF00</color>
+    <color name="gc_green_sub_50">#82D780</color>
 </resources>

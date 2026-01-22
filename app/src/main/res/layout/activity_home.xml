@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gc_orange_sub">
+
+    <!-- 캐릭터 -->
+    <ImageView
+        android:id="@+id/imgCheer"
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:src="@drawable/cinemon_charc"
+        android:contentDescription="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="259dp"
+        android:layout_marginTop="64dp"/>
+
+    <!-- 파이팅 말풍선 -->
+    <TextView
+        android:id="@+id/tvFighting"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:background="@drawable/bg_pill_orange"
+        android:text="파이팅!"
+        android:textColor="@android:color/white"
+        android:textSize="11sp"
+        android:fontFamily="@font/suite_bold"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="84dp"/>
+
+    <!-- 인사 -->
+    <TextView
+        android:id="@+id/tvHello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="박채린님 안녕하세요!"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="77dp"/>
+
+    <!-- 다음 근무일까지 -->
+    <TextView
+        android:id="@+id/tvNextWorkTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="다음 근무일 까지"
+        android:textColor="@color/gc_black_70"
+        android:textSize="20sp"
+        android:fontFamily="@font/suite_extrabold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="121dp"/>
+
+    <!-- 남은 시간(색 분리) -->
+    <LinearLayout
+        android:id="@+id/layoutRemain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="153dp">
+
+        <TextView
+            android:id="@+id/tvRemainOrange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1일 17시간 34분"
+            android:textColor="@color/gc_orange_main"
+            android:textSize="20sp"
+            android:fontFamily="@font/suite_extrabold"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvRemainGray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 남았어요!"
+            android:textColor="@color/gc_black_70"
+            android:textSize="20sp"
+            android:fontFamily="@font/suite_medium"/>
+    </LinearLayout>
+
+    <!-- 흰색 패널(라운드+그림자 포함 PNG) -->
+    <ImageView
+        android:id="@+id/homeSheet"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/bg_home_sheet"
+        android:scaleType="fitXY"
+        android:contentDescription="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavContainer"
+        android:layout_marginTop="207dp"
+        android:layout_marginBottom="-90dp"/>
+
+    <!-- 월 표시 (235-207=28) -->
+    <TextView
+        android:id="@+id/tvMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2026.01"
+        android:textColor="@color/gc_black_70"
+        android:textSize="20sp"
+        android:fontFamily="@font/suite_extrabold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="28dp"/>
+
+    <!-- 달력 선택(17/18) 배경 (280-207=73) -->
+    <View
+        android:id="@+id/bgDay17"
+        android:layout_width="46dp"
+        android:layout_height="91dp"
+        android:background="@drawable/bg_calendar_today"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="73dp"/>
+
+    <View
+        android:id="@+id/bgDay18"
+        android:layout_width="46dp"
+        android:layout_height="91dp"
+        android:background="@drawable/bg_calendar_selected"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="73dp"/>
+
+    <!-- 요일/날짜 텍스트 -->
+    <TextView
+        android:id="@+id/tvDow17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="토"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="91dp"/>
+
+    <TextView
+        android:id="@+id/tvDate17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="17"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="125dp"/>
+
+    <TextView
+        android:id="@+id/tvDow18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="일"
+        android:textColor="@color/gc_blue_public"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="91dp"/>
+
+    <TextView
+        android:id="@+id/tvDate18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18"
+        android:textColor="@color/gc_orange_main"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="125dp"/>
+
+    <TextView
+        android:id="@+id/tvDow19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="월"
+        android:textColor="@color/gc_orange_main"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="91dp"/>
+
+    <TextView
+        android:id="@+id/tvDate19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="19"
+        android:textColor="@color/gc_orange_main"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="125dp"/>
+
+    <TextView
+        android:id="@+id/tvDow20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="화"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="193dp"
+        android:layout_marginTop="91dp"/>
+
+    <TextView
+        android:id="@+id/tvDate20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="189dp"
+        android:layout_marginTop="125dp"/>
+
+    <TextView
+        android:id="@+id/tvDow21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수"
+        android:textColor="@color/gc_orange_main"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="242dp"
+        android:layout_marginTop="91dp"/>
+
+    <TextView
+        android:id="@+id/tvDate21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="21"
+        android:textColor="@color/gc_orange_main"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="241dp"
+        android:layout_marginTop="125dp"/>
+
+    <TextView
+        android:id="@+id/tvDow22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="목"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="289dp"
+        android:layout_marginTop="91dp"/>
+
+    <TextView
+        android:id="@+id/tvDate22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="287dp"
+        android:layout_marginTop="125dp"/>
+
+    <TextView
+        android:id="@+id/tvDow23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="금"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="337dp"
+        android:layout_marginTop="91dp"/>
+
+    <TextView
+        android:id="@+id/tvDate23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="23"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="335dp"
+        android:layout_marginTop="125dp"/>
+
+    <!-- 다가오는 근무 날 (403-207=196) -->
+    <TextView
+        android:id="@+id/tvUpcomingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="다가오는 근무 날"
+        android:textColor="@color/gc_black_70"
+        android:textSize="20sp"
+        android:fontFamily="@font/suite_extrabold"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="196dp"/>
+
+    <ImageView
+        android:id="@+id/btnEditUpcoming"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:src="@drawable/icon_edit"
+        android:contentDescription="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="346dp"
+        android:layout_marginTop="202dp"/>
+
+    <!-- 근무 카드 (448-207=241) -->
+    <LinearLayout
+        android:id="@+id/cardUpcoming"
+        android:layout_width="341dp"
+        android:layout_height="220dp"
+        android:background="@drawable/bg_home_card"
+        android:orientation="vertical"
+        android:paddingStart="23dp"
+        android:paddingEnd="23dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/homeSheet"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="241dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="포지션"
+            android:textColor="@color/gc_black_70"
+            android:textSize="16sp"
+            android:fontFamily="@font/suite_extrabold"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/chipPosition"
+            android:layout_width="60dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_chip_orange"
+            android:gravity="center"
+            android:text="매점"
+            android:textColor="@color/gc_black_70"
+            android:textSize="14sp"
+            android:fontFamily="@font/suite_medium"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="근무 타입"
+            android:textColor="@color/gc_black_70"
+            android:textSize="16sp"
+            android:fontFamily="@font/suite_extrabold"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/chipWorkType"
+            android:layout_width="147dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_chip_blue"
+            android:gravity="center"
+            android:text="마감 18:30~00:00"
+            android:textColor="@color/gc_black_70"
+            android:textSize="14sp"
+            android:fontFamily="@font/suite_medium"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="메모"
+            android:textColor="@color/gc_black_70"
+            android:textSize="16sp"
+            android:fontFamily="@font/suite_extrabold"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvMemo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="마감 때 잊지 않고 팝콘 기기 잘 끄기!"
+            android:textColor="@color/gc_black_70"
+            android:textSize="14sp"
+            android:fontFamily="@font/suite_medium"/>
+    </LinearLayout>
+
+    <!-- 하단 네비 -->
+    <include
+        android:id="@+id/bottomNavContainer"
+        layout="@layout/view_bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="89dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

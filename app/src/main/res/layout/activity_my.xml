@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/myRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- 하단 네비 include -->
+    <include
+        android:id="@+id/bottomNavContainer"
+        layout="@layout/view_bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="89dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!-- 스크롤 영역 -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/svMy"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/myContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
+
+            <!-- 캐릭터 -->
+            <ImageView
+                android:id="@+id/ivMyChar"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:src="@drawable/cinemon_charc"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="70dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 이름 -->
+            <TextView
+                android:id="@+id/tvMyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="박채린"
+                android:textSize="24sp"
+                android:textColor="#222222"
+                android:fontFamily="@font/suite_extrabold"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/ivMyChar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!--기본 시급-->
+            <TextView
+                android:id="@+id/tvWageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기본 시급"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:fontFamily="@font/suite_bold"
+                android:layout_marginStart="23dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cardWage"
+                app:layout_constraintBottom_toBottomOf="@id/cardWage"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardWage"
+                android:layout_width="0dp"
+                android:layout_height="53dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginTop="54dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/gc_black_40"
+                app:layout_constraintTop_toBottomOf="@id/tvMyName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintWidth_percent="0.5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- 텍스트 입력으로 변경(초기값 없음) -->
+                    <EditText
+                        android:id="@+id/etWage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:hint=""
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="#AAAAAA"
+                        android:fontFamily="@font/suite_medium"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:imeOptions="actionDone"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:cursorVisible="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivWageAction"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/ivWageAction"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/icon_edit"
+                        android:contentDescription="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <!-- 기본 휴게 시간 -->
+            <TextView
+                android:id="@+id/tvRestLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기본 휴게 시간"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:fontFamily="@font/suite_bold"
+                android:layout_marginStart="23dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cardRest"
+                app:layout_constraintBottom_toBottomOf="@id/cardRest"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRest"
+                android:layout_width="0dp"
+                android:layout_height="53dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginTop="22dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/gc_black_40"
+                app:layout_constraintTop_toBottomOf="@id/cardWage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintWidth_percent="0.5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/etRest"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="#AAAAAA"
+                        android:fontFamily="@font/suite_medium"
+                        android:singleLine="true"
+                        android:imeOptions="actionDone"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:cursorVisible="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivRestAction"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/ivRestAction"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/icon_edit"
+                        android:contentDescription="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 주간 시작 요일  -->
+            <TextView
+                android:id="@+id/tvWeekStartLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주간 시작 요일"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:fontFamily="@font/suite_bold"
+                android:layout_marginStart="23dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cardWeekStart"
+                app:layout_constraintBottom_toBottomOf="@id/cardWeekStart"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardWeekStart"
+                android:layout_width="0dp"
+                android:layout_height="53dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginTop="22dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#AAAAAA"
+                app:layout_constraintTop_toBottomOf="@id/cardRest"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintWidth_percent="0.5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/etWeekStart"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="#AAAAAA"
+                        android:fontFamily="@font/suite_medium"
+                        android:singleLine="true"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:cursorVisible="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivWeekStartAction"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/ivWeekStartAction"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/icon_edit"
+                        android:contentDescription="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 월급 시작일 -->
+            <TextView
+                android:id="@+id/tvSalaryStartLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월급 시작일"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:fontFamily="@font/suite_bold"
+                android:layout_marginStart="23dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cardSalaryStart"
+                app:layout_constraintBottom_toBottomOf="@id/cardSalaryStart"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSalaryStart"
+                android:layout_width="0dp"
+                android:layout_height="53dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginTop="22dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#AAAAAA"
+                app:layout_constraintTop_toBottomOf="@id/cardWeekStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintWidth_percent="0.5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/etSalaryStart"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="#AAAAAA"
+                        android:fontFamily="@font/suite_medium"
+                        android:singleLine="true"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:cursorVisible="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivSalaryStartAction"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/ivSalaryStartAction"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/icon_edit"
+                        android:contentDescription="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 스위치 2개 -->
+
+            <TextView
+                android:id="@+id/tvTaxLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="세금 공제 계산"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:fontFamily="@font/suite_bold"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="34dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardSalaryStart"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swTax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_marginEnd="23dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvTaxLabel"
+                app:layout_constraintBottom_toBottomOf="@id/tvTaxLabel"/>
+
+            <TextView
+                android:id="@+id/tvWeeklyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주휴 수당 자동 계산"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:fontFamily="@font/suite_bold"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="22dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTaxLabel"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swWeekly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_marginEnd="23dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvWeeklyLabel"
+                app:layout_constraintBottom_toBottomOf="@id/tvWeeklyLabel"/>
+
+            <!-- 두꺼운 구분 바 -->
+            <View
+                android:id="@+id/vBar"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:background="#F5F5F5"
+                android:layout_marginTop="22dp"
+                app:layout_constraintTop_toBottomOf="@id/tvWeeklyLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 프리셋 관리 (라인 있는 행) -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/rowPreset"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintTop_toBottomOf="@id/vBar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <View
+                    android:id="@+id/vPresetTop"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvPreset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="프리셋 관리"
+                    android:textSize="18sp"
+                    android:textColor="#222222"
+                    android:fontFamily="@font/suite_semibold"
+                    android:layout_marginStart="23dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <View
+                    android:id="@+id/vPresetBottom"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

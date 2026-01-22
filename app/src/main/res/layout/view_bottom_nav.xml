@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="89dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/nav_bottom_sheet"
+        android:scaleType="fitXY"
+        android:contentDescription="@null"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:id="@+id/tabHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/ivTabHome"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/nav_home"
+                android:tint="@color/gc_black_20"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:id="@+id/tvTabHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="홈"
+                android:textSize="12sp"
+                android:textColor="@color/gc_black_20"
+                android:fontFamily="@font/suite_bold"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tabSchedule"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/ivTabSchedule"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/nav_calendar"
+                android:tint="@color/gc_black_20"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:id="@+id/tvTabSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="스케줄"
+                android:textSize="12sp"
+                android:textColor="@color/gc_black_20"
+                android:fontFamily="@font/suite_bold"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tabReport"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/ivTabReport"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/nav_report"
+                android:tint="@color/gc_black_20"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:id="@+id/tvTabReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="레포트"
+                android:textSize="12sp"
+                android:textColor="@color/gc_black_20"
+                android:fontFamily="@font/suite_bold"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tabMy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/ivTabMy"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/nav_my"
+                android:tint="@color/gc_black_20"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:id="@+id/tvTabMy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MY"
+                android:textSize="12sp"
+                android:textColor="@color/gc_black_20"
+                android:fontFamily="@font/suite_bold"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

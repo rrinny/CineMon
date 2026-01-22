@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dayCellRoot"
+    android:layout_width="match_parent"
+    android:layout_height="96dp">
+
+    <!-- 날짜 -->
+    <TextView
+        android:id="@+id/tvDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18"
+        android:textColor="@color/gc_black_70"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp" />
+
+    <!-- 공휴일/라벨 (예: 새해) -->
+    <TextView
+        android:id="@+id/tvHoliday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="새해"
+        android:textColor="@color/gc_blue_public"
+        android:textSize="12sp"
+        android:fontFamily="@font/suite_bold"
+        android:textStyle="bold"
+        android:includeFontPadding="false"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvDay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="2dp" />
+
+    <!-- 태그 영역 -->
+    <LinearLayout
+        android:id="@+id/layoutTags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvTag1"
+            android:layout_width="35dp"
+            android:layout_height="17dp"
+            android:background="@drawable/bg_tag_orange_50"
+            android:gravity="center"
+            android:text="매점"
+            android:textColor="@color/gc_black_70"
+            android:textSize="12sp"
+            android:fontFamily="@font/suite_bold"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvTag2"
+            android:layout_width="35dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/bg_tag_blue_50"
+            android:gravity="center"
+            android:text="마감"
+            android:textColor="@color/gc_black_70"
+            android:textSize="12sp"
+            android:fontFamily="@font/suite_bold"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

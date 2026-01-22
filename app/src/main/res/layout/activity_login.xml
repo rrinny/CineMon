@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gc_orange_sub">
+
+    <!-- 로고 -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="239dp"
+        android:layout_height="76dp"
+        android:contentDescription="@null"
+        android:src="@drawable/cinemon_logo1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="123dp" />
+
+    <!-- PIN 안내 문구 -->
+    <TextView
+        android:id="@+id/tvPinGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PIN 번호 6자리 입력"
+        android:textColor="#222222"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="221dp" />
+
+    <!-- PIN 점 6개 -->
+    <LinearLayout
+        android:id="@+id/layoutPinDots"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="282dp">
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/pin_dot_active" />
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="17dp"
+            android:background="@drawable/pin_dot_inactive" />
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="17dp"
+            android:background="@drawable/pin_dot_inactive" />
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="17dp"
+            android:background="@drawable/pin_dot_inactive" />
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="17dp"
+            android:background="@drawable/pin_dot_inactive" />
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="17dp"
+            android:background="@drawable/pin_dot_inactive" />
+    </LinearLayout>
+
+    <!-- 키패드 숫자: num_0 ~ num_9 (벡터 이미지) -->
+
+    <ImageView
+        android:id="@+id/key1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_1"
+        android:contentDescription="1"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="376dp" />
+
+    <ImageView
+        android:id="@+id/key2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_2"
+        android:contentDescription="2"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="187dp"
+        android:layout_marginTop="376dp" />
+
+    <ImageView
+        android:id="@+id/key3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_3"
+        android:contentDescription="3"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="376dp" />
+
+    <ImageView
+        android:id="@+id/key4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_4"
+        android:contentDescription="4"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="458dp" />
+
+    <ImageView
+        android:id="@+id/key5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_5"
+        android:contentDescription="5"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="187dp"
+        android:layout_marginTop="458dp" />
+
+    <ImageView
+        android:id="@+id/key6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_6"
+        android:contentDescription="6"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="458dp" />
+
+    <ImageView
+        android:id="@+id/key7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_7"
+        android:contentDescription="7"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="540dp" />
+
+    <ImageView
+        android:id="@+id/key8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_8"
+        android:contentDescription="8"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="187dp"
+        android:layout_marginTop="540dp" />
+
+    <ImageView
+        android:id="@+id/key9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_9"
+        android:contentDescription="9"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="540dp" />
+
+    <ImageView
+        android:id="@+id/key0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/num_0"
+        android:contentDescription="0"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="187dp"
+        android:layout_marginTop="616dp" />
+
+    <!-- 삭제(백스페이스) 아이콘 -->
+    <ImageView
+        android:id="@+id/btnDelete"
+        android:layout_width="30dp"
+        android:layout_height="28dp"
+        android:src="@drawable/delete"
+        android:contentDescription="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="293dp"
+        android:layout_marginTop="621dp" />
+
+    <!-- 회원가입 -->
+    <TextView
+        android:id="@+id/tvSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입 하기"
+        android:textColor="#222222"
+        android:textSize="16sp"
+        android:fontFamily="@font/suite_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="722dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="520dp"
+    android:background="@drawable/bg_bottomsheet_round_white">
+
+    <!-- 날짜 타이틀 -->
+    <TextView
+        android:id="@+id/tvBsDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1월 18일 일요일"
+        android:textColor="#222222"
+        android:textSize="20sp"
+        android:fontFamily="@font/suite_extrabold"
+        android:textStyle="bold"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- 상단: 현재 선택된 칩들(닫기 X 포함) -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupSelected"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="14dp"
+        app:singleLine="true"
+        app:chipSpacingHorizontal="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBsDate">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipSelectedPos"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:text="매점"
+            android:textColor="#444444"
+            android:textSize="14sp"
+            android:fontFamily="@font/suite_medium"
+            android:checkable="false"
+            app:ensureMinTouchTargetSize="false"
+            app:chipMinHeight="26dp"
+            app:chipCornerRadius="16dp"
+            app:chipStrokeWidth="1dp"
+            app:chipStrokeColor="#FE6301"
+            app:chipBackgroundColor="#33FE6301"
+            app:chipStartPadding="18dp"
+            app:chipEndPadding="12dp"
+            app:closeIconVisible="true"
+            app:closeIcon="@drawable/ic_bs_close_8"
+            app:closeIconTint="#777777"
+            app:closeIconSize="8dp"
+            app:closeIconStartPadding="8dp"
+            app:closeIconEndPadding="0dp"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipSelectedType"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:text="미들 11:30~18:30"
+            android:textColor="#444444"
+            android:textSize="14sp"
+            android:fontFamily="@font/suite_medium"
+            android:checkable="false"
+            app:ensureMinTouchTargetSize="false"
+            app:chipMinHeight="26dp"
+            app:chipCornerRadius="16dp"
+            app:chipStrokeWidth="1dp"
+            app:chipStrokeColor="#06AF00"
+            app:chipBackgroundColor="#3306AF00"
+            app:chipStartPadding="18dp"
+            app:chipEndPadding="12dp"
+            app:closeIconVisible="true"
+            app:closeIcon="@drawable/ic_bs_close_8"
+            app:closeIconTint="#777777"
+            app:closeIconSize="8dp"
+            app:closeIconStartPadding="8dp"
+            app:closeIconEndPadding="0dp"/>
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- 포지션 라벨 -->
+    <TextView
+        android:id="@+id/tvPosLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="포지션"
+        android:textColor="#222222"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipGroupSelected"/>
+
+    <!-- 포지션 선택 칩 -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupPosition"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="10dp"
+        app:singleSelection="true"
+        app:selectionRequired="false"
+        app:chipSpacingHorizontal="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPosLabel">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPosStore"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:text="매점"
+            android:textColor="#444444"
+            android:textSize="14sp"
+            android:fontFamily="@font/suite_medium"
+            android:checkable="true"
+            app:ensureMinTouchTargetSize="false"
+            app:chipMinHeight="26dp"
+            app:chipCornerRadius="16dp"
+            app:chipStrokeWidth="1dp"
+            app:chipStrokeColor="#FE6301"
+            app:chipBackgroundColor="#33FE6301"
+            app:chipStartPadding="18dp"
+            app:chipEndPadding="18dp"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPosTicket"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:text="검표"
+            android:textColor="#444444"
+            android:textSize="14sp"
+            android:fontFamily="@font/suite_medium"
+            android:checkable="true"
+            app:ensureMinTouchTargetSize="false"
+            app:chipMinHeight="26dp"
+            app:chipCornerRadius="16dp"
+            app:chipStrokeWidth="1dp"
+            app:chipStrokeColor="#0073FF"
+            app:chipBackgroundColor="#330073FF"
+            app:chipStartPadding="18dp"
+            app:chipEndPadding="18dp"/>
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- 근무 타입 라벨 -->
+    <TextView
+        android:id="@+id/tvTypeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="근무 타입"
+        android:textColor="#222222"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipGroupPosition"/>
+
+    <!-- 근무 타입 칩(가로 스크롤) -->
+    <HorizontalScrollView
+        android:id="@+id/hsWorkTypes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTypeLabel">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupWorkType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"
+            app:singleSelection="true"
+            app:selectionRequired="false"
+            app:chipSpacingHorizontal="5dp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTypeOpen"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:text="오픈 07:00~11:30"
+                android:textColor="#444444"
+                android:textSize="14sp"
+                android:fontFamily="@font/suite_medium"
+                android:checkable="true"
+                app:ensureMinTouchTargetSize="false"
+                app:chipMinHeight="26dp"
+                app:chipCornerRadius="16dp"
+                app:chipStrokeWidth="1dp"
+                app:chipStrokeColor="#FE6301"
+                app:chipBackgroundColor="#33FE6301"
+                app:chipStartPadding="18dp"
+                app:chipEndPadding="18dp"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTypeMiddle"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:text="미들 11:30~18:30"
+                android:textColor="#444444"
+                android:textSize="14sp"
+                android:fontFamily="@font/suite_medium"
+                android:checkable="true"
+                app:ensureMinTouchTargetSize="false"
+                app:chipMinHeight="26dp"
+                app:chipCornerRadius="16dp"
+                app:chipStrokeWidth="1dp"
+                app:chipStrokeColor="#06AF00"
+                app:chipBackgroundColor="#3306AF00"
+                app:chipStartPadding="18dp"
+                app:chipEndPadding="18dp"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTypeClose"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:text="마감 18:30~00:00"
+                android:textColor="#444444"
+                android:textSize="14sp"
+                android:fontFamily="@font/suite_medium"
+                android:checkable="true"
+                app:ensureMinTouchTargetSize="false"
+                app:chipMinHeight="26dp"
+                app:chipCornerRadius="16dp"
+                app:chipStrokeWidth="1dp"
+                app:chipStrokeColor="#0073FF"
+                app:chipBackgroundColor="#330073FF"
+                app:chipStartPadding="18dp"
+                app:chipEndPadding="18dp"/>
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- 메모 라벨 -->
+    <TextView
+        android:id="@+id/tvMemoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메모"
+        android:textColor="#222222"
+        android:textSize="18sp"
+        android:fontFamily="@font/suite_semibold"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hsWorkTypes"/>
+
+    <!-- 메모 입력  -->
+    <EditText
+        android:id="@+id/edtMemo"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/bg_memo_field"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:text="마감 때 잊지 말고 팝콘 기기 잘 끄기!"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/suite_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMemoLabel"
+        app:layout_constraintBottom_toTopOf="@id/btnSave"/>
+
+    <!-- 저장 버튼  -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave"
+        android:layout_width="345dp"
+        android:layout_height="53dp"
+        android:text="저장하기"
+        android:textSize="16sp"
+        android:textColor="#F5F5F5"
+        android:fontFamily="@font/suite_bold"
+        android:layout_marginBottom="18dp"
+        app:cornerRadius="8dp"
+        app:backgroundTint="#FE6301"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtMemo"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- HEAD -->
+    <style name="TextAppearance.GCinemon.Head.ExtraBold24" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/suite_extrabold</item>
+        <item name="fontFamily">@font/suite_extrabold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">28.8sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.GCinemon.Head.ExtraBold20" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/suite_extrabold</item>
+        <item name="fontFamily">@font/suite_extrabold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.GCinemon.Head.ExtraBold18" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:fontFamily">@font/suite_extrabold</item>
+        <item name="fontFamily">@font/suite_extrabold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">21.6sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.GCinemon.Head.ExtraBold16" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/suite_extrabold</item>
+        <item name="fontFamily">@font/suite_extrabold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">19.2sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.GCinemon.Head.SemiBold18" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:fontFamily">@font/suite_semibold</item>
+        <item name="fontFamily">@font/suite_semibold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">21.6sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.GCinemon.Head.Medium20" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/suite_medium</item>
+        <item name="fontFamily">@font/suite_medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.GCinemon.Head.Medium18" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:fontFamily">@font/suite_medium</item>
+        <item name="fontFamily">@font/suite_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">21.6sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.GCinemon.Head.SemiBold16" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/suite_semibold</item>
+        <item name="fontFamily">@font/suite_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">19.2sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.GCinemon.Head.Bold16" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/suite_bold</item>
+        <item name="fontFamily">@font/suite_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">19.2sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.GCinemon.Head.Bold12" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/suite_bold</item>
+        <item name="fontFamily">@font/suite_bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">14.4sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- BODY -->
+    <style name="TextAppearance.GCinemon.Body.Medium14" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/suite_medium</item>
+        <item name="fontFamily">@font/suite_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">16.8sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>

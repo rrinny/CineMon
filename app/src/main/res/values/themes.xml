@@ -1,9 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.GCinemon" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <style name="Theme.GCinemon" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Brand -->
+        <item name="colorPrimary">@color/gc_orange_main</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorPrimaryContainer">@color/gc_orange_sub</item>
+        <item name="colorOnPrimaryContainer">@color/gc_black_90</item>
+
+        <item name="colorSecondary">@color/gc_blue_public</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+        <item name="colorSecondaryContainer">@color/gc_blue_public_20</item>
+        <item name="colorOnSecondaryContainer">@color/gc_blue_public</item>
+
+        <item name="colorTertiary">@color/gc_green_sub</item>
+        <item name="colorOnTertiary">@android:color/white</item>
+        <item name="colorTertiaryContainer">@color/gc_green_sub_50</item>
+        <item name="colorOnTertiaryContainer">@color/gc_green_sub</item>
+
+        <!-- Surface/Background -->
+        <item name="android:colorBackground">@color/gc_orange_sub</item>
+        <item name="colorOnBackground">@color/gc_black_90</item>
+        <item name="colorSurface">@color/gc_orange_sub</item>
+        <item name="colorOnSurface">@color/gc_black_90</item>
+
+        <!-- Default font -->
+        <item name="fontFamily">@font/suite_medium</item>
+        <item name="android:fontFamily">@font/suite_medium</item>
+
+        <!-- Status bar (light) -->
+        <item name="android:statusBarColor">@color/gc_orange_sub</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="Theme.GCinemon" parent="Base.Theme.GCinemon" />
 </resources>

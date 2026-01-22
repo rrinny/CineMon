@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/join_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- 뒤로가기 / 타이틀 / 입력란 그룹 -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/icon_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvJoinTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/suite_medium"
+        android:text="회원가입"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/groupNickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginTop="126dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="닉네임"
+            android:textColor="@color/gc_black_90"
+            android:textSize="18sp"
+            android:fontFamily="@font/suite_semibold" />
+
+        <EditText
+            android:id="@+id/etNickname"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_join_input"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:textColor="@color/gc_black_90"
+            android:textSize="16sp"
+            android:fontFamily="@font/suite_medium"
+            android:inputType="textPersonName"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <!-- PIN 번호 6자리 그룹 -->
+    <LinearLayout
+        android:id="@+id/groupPin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginTop="241dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PIN 번호 6자리"
+            android:textColor="@color/gc_black_90"
+            android:textSize="18sp"
+            android:fontFamily="@font/suite_semibold" />
+
+        <EditText
+            android:id="@+id/etPin"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_join_input"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:textColor="@color/gc_black_90"
+            android:textSize="16sp"
+            android:fontFamily="@font/suite_medium"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <!-- PIN 확인 그룹 -->
+    <LinearLayout
+        android:id="@+id/groupPinCheck"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginTop="356dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PIN 번호 6자리 확인"
+            android:textColor="@color/gc_black_90"
+            android:textSize="18sp"
+            android:fontFamily="@font/suite_semibold" />
+
+        <EditText
+            android:id="@+id/etPinCheck"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_join_input"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:textColor="@color/gc_black_90"
+            android:textSize="16sp"
+            android:fontFamily="@font/suite_medium"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <!-- 회원가입 버튼 -->
+    <TextView
+        android:id="@+id/btnJoin"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/bg_join_btn"
+        android:enabled="false"
+        android:fontFamily="@font/suite_bold"
+        android:gravity="center"
+        android:text="회원가입"
+        android:textColor="@drawable/color_join_btn_text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
