@@ -22,7 +22,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="근무일정 추가"
+        android:text="근무 일정 추가"
         android:textColor="#000000"
         android:textSize="18sp"
         android:fontFamily="@font/suite_medium"
@@ -220,7 +220,7 @@
                 android:id="@+id/chipTypeOpen"
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
-                android:text="오픈 07:00~11:30"
+                android:text="오픈 09:00~15:30"
                 android:textColor="#444444"
                 android:textSize="14sp"
                 android:fontFamily="@font/suite_medium"
@@ -256,7 +256,7 @@
                 android:id="@+id/chipTypeClose"
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
-                android:text="마감 18:30~00:00"
+                android:text="마감 15:30~22:00"
                 android:textColor="#444444"
                 android:textSize="14sp"
                 android:fontFamily="@font/suite_medium"
@@ -302,8 +302,7 @@
         android:fontFamily="@font/suite_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvMemoLabel"
-        app:layout_constraintBottom_toTopOf="@id/btnSave"/>
+        app:layout_constraintTop_toBottomOf="@id/tvMemoLabel"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSave"

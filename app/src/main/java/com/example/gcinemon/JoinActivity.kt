@@ -8,6 +8,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import com.example.gcinemon.data.AppDatabase
+import com.example.gcinemon.data.entity.UserEntity
 
 class JoinActivity : AppCompatActivity() {
 
@@ -27,7 +31,7 @@ class JoinActivity : AppCompatActivity() {
         btnJoin = findViewById(R.id.btnJoin)
         btnBack = findViewById(R.id.btnBack)
 
-        // 초기 상태(회색)
+        // 초기 상태
         updateJoinButtonState()
 
         val watcher = object : TextWatcher {
@@ -43,12 +47,20 @@ class JoinActivity : AppCompatActivity() {
         etPinCheck.addTextChangedListener(watcher)
 
         btnJoin.setOnClickListener {
-            // enabled=true일 때만 동작
             if (!btnJoin.isEnabled) return@setOnClickListener
 
-            // 회원가입 성공 처리 후 로그인 화면으로 이동
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish() // Join 화면은 뒤로가기로 돌아오지 않게
+            val nickname = etNickname.text.toString().trim()
+            val pinValue = etPin.text.toString().trim()
+
+            lifecycleScope.launch {
+                val db = AppDatabase.getInstance(this@JoinActivity)
+                // 유저 정보 저장
+                db.userDao().insertUser(UserEntity(nickname = nickname, pin = pinValue))
+
+                // 로그인 화면으로 이동
+                startActivity(Intent(this@JoinActivity, LoginActivity::class.java))
+                finish()
+            }
         }
 
         btnBack.setOnClickListener {

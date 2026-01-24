@@ -138,12 +138,82 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-            <!-- 기본 휴게 시간 -->
+            <!-- 근무 시간 -->
+            <TextView
+                android:id="@+id/tvWorkLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="근무 시간"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:fontFamily="@font/suite_bold"
+                android:layout_marginStart="23dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/cardWork"
+                app:layout_constraintBottom_toBottomOf="@id/cardWork"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardWork"
+                android:layout_width="0dp"
+                android:layout_height="53dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginTop="22dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/gc_black_40"
+                app:layout_constraintTop_toBottomOf="@id/cardWage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintWidth_percent="0.5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/etWork"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:textColor="#AAAAAA"
+                        android:fontFamily="@font/suite_medium"
+                        android:singleLine="true"
+                        android:imeOptions="actionDone"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:cursorVisible="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivWorkAction"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/ivWorkAction"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/icon_edit"
+                        android:contentDescription="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 휴게 시간 -->
             <TextView
                 android:id="@+id/tvRestLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="기본 휴게 시간"
+                android:text="휴게 시간"
                 android:textSize="18sp"
                 android:textColor="#222222"
                 android:fontFamily="@font/suite_bold"
@@ -163,7 +233,7 @@
                 app:cardElevation="0dp"
                 app:strokeWidth="1dp"
                 app:strokeColor="@color/gc_black_40"
-                app:layout_constraintTop_toBottomOf="@id/cardWage"
+                app:layout_constraintTop_toBottomOf="@id/cardWork"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -208,12 +278,12 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 주간 시작 요일  -->
+            <!-- 시작 요일  -->
             <TextView
                 android:id="@+id/tvWeekStartLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="주간 시작 요일"
+                android:text="시작 요일"
                 android:textSize="18sp"
                 android:textColor="#222222"
                 android:fontFamily="@font/suite_bold"
@@ -282,7 +352,7 @@
                 android:id="@+id/tvSalaryStartLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="월급 시작일"
+                android:text="월급날"
                 android:textSize="18sp"
                 android:textColor="#222222"
                 android:fontFamily="@font/suite_bold"

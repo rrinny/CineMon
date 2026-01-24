@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bsDeleteRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="24dp"
+    android:background="@drawable/bg_bottomsheet_round_white">
+
+    <View
+        android:id="@+id/viewHandle"
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="12dp"
+        android:background="#D9D9D9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDeleteTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1월 18일 일요일\n근무 일정을 삭제할까요?"
+        android:textColor="#222222"
+        android:textSize="20sp"
+        android:lineSpacingExtra="4sp"
+        android:fontFamily="@font/suite_extrabold"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewHandle"/>
+
+    <TextView
+        android:id="@+id/tvDeleteSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="삭제된 일정은 복구할 수 없어요!"
+        android:textColor="#777777"
+        android:textSize="14sp"
+        android:fontFamily="@font/suite_medium"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDeleteTitle"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/tvDeleteSubTitle"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:text="돌아가기"
+            android:textSize="16sp"
+            android:textColor="#777777"
+            android:fontFamily="@font/suite_bold"
+            app:cornerRadius="8dp"
+            app:backgroundTint="#F2F2F2"
+            app:strokeWidth="0dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:text="삭제하기"
+            android:textSize="16sp"
+            android:textColor="#F5F5F5"
+            android:fontFamily="@font/suite_bold"
+            app:cornerRadius="8dp"
+            app:backgroundTint="#FE6301"
+            app:strokeWidth="0dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,8 @@ import java.util.Calendar
 import java.util.Locale
 
 class CalendarAdapter(
-    private val onClickDay: (CalendarDay) -> Unit
+    private val onClickDay: (CalendarDay) -> Unit,
+    private val onLongClickDay: (CalendarDay) -> Unit
 ) : RecyclerView.Adapter<CalendarAdapter.VH>() {
 
     private val items = mutableListOf<CalendarDay>()
@@ -29,18 +30,20 @@ class CalendarAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_calendar_day, parent, false)
-        return VH(v, onClickDay)
+        return VH(v, onClickDay, onLongClickDay)
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.bind(items[position], selectedKey)
+        val day = items[position]
+        holder.bind(day, selectedKey)
     }
 
     override fun getItemCount(): Int = items.size
 
     class VH(
         itemView: View,
-        private val onClickDay: (CalendarDay) -> Unit
+        private val onClickDay: (CalendarDay) -> Unit,
+        private val onLongClickDay: (CalendarDay) -> Unit // [추가]
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val tvDay: TextView = itemView.findViewById(R.id.tvDay)
@@ -51,29 +54,34 @@ class CalendarAdapter(
         fun bind(day: CalendarDay, selectedKey: String?) {
             tvDay.text = day.day.toString()
 
-            // 기본 색(이번달/이전달/다음달)
-            if (day.isInMonth) {
-                tvDay.setTextColor(itemView.context.getColor(R.color.gc_black_70))
+            val calendar = Calendar.getInstance().apply {
+                set(day.year, day.month - 1, day.day)
+            }
+            val isSunday = calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY
+            val hasHoliday = !day.holidayName.isNullOrBlank()
+
+            val defaultColor = if (day.isInMonth) {
+                itemView.context.getColor(R.color.gc_black_70)
             } else {
-                tvDay.setTextColor(itemView.context.getColor(R.color.gc_black_20))
+                itemView.context.getColor(R.color.gc_black_20)
             }
 
-            // 선택일
-            if (day.key == selectedKey) {
-                tvDay.setTextColor(itemView.context.getColor(R.color.gc_orange_main))
+            when {
+                !day.isInMonth -> tvDay.setTextColor(defaultColor)
+                day.key == selectedKey -> tvDay.setTextColor(itemView.context.getColor(R.color.gc_orange_main))
+                hasHoliday || isSunday -> tvDay.setTextColor(itemView.context.getColor(R.color.gc_blue_public))
+                day.tags.isNotEmpty() -> tvDay.setTextColor(itemView.context.getColor(R.color.gc_orange_main))
+                else -> tvDay.setTextColor(defaultColor)
             }
 
-            // holiday 라벨 (예: 새해)
-            val holidayName = day.holidayName
-            if (!holidayName.isNullOrBlank()) {
+            if (hasHoliday) {
                 tvHoliday.visibility = View.VISIBLE
-                tvHoliday.text = holidayName
-                tvDay.setTextColor(itemView.context.getColor(R.color.gc_blue_public))
+                tvHoliday.text = day.holidayName
+                tvHoliday.setTextColor(itemView.context.getColor(R.color.gc_blue_public))
             } else {
                 tvHoliday.visibility = View.GONE
             }
 
-            // 태그
             tvTag1.visibility = View.GONE
             tvTag2.visibility = View.GONE
 
@@ -88,30 +96,32 @@ class CalendarAdapter(
             }
 
             itemView.setOnClickListener { onClickDay(day) }
+
+            itemView.setOnLongClickListener {
+                onLongClickDay(day)
+                true
+            }
         }
 
         private fun bindTag(tv: TextView, tag: WorkTag) {
             tv.text = tag.label
-
             val bgRes = when (tag.style) {
                 TagStyle.ORANGE -> R.drawable.bg_tag_orange_50
                 TagStyle.BLUE -> R.drawable.bg_tag_blue_50
                 TagStyle.GREEN -> R.drawable.bg_tag_green_50
-                TagStyle.HOLIDAY -> 0 // holiday는 tvHoliday로 표현
+                TagStyle.HOLIDAY -> 0
             }
-
             if (bgRes != 0) tv.setBackgroundResource(bgRes)
         }
     }
 }
 
-// 달력 한 칸 데이터
 data class CalendarDay(
     val year: Int,
-    val month: Int,   // 1~12
+    val month: Int,
     val day: Int,
     val isInMonth: Boolean,
-    val key: String,  // yyyyMMdd
+    val key: String,
     val holidayName: String? = null,
     val tags: List<WorkTag> = emptyList()
 )

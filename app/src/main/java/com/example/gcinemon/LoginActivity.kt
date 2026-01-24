@@ -7,6 +7,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import android.view.animation.AnimationUtils
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import com.example.gcinemon.data.AppDatabase
 
 class LoginActivity : AppCompatActivity() {
 
@@ -50,15 +54,39 @@ class LoginActivity : AppCompatActivity() {
         updateDots()
     }
 
+    // 숫자를 누를 때 실행되는 함수
     private fun appendDigit(d: Char) {
         if (pin.length >= 6) return
         pin.append(d)
         updateDots()
 
         if (pin.length == 6) {
-            // 6자리 입력 완료 -> 홈 이동
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
+            checkPinAndLogin()
+        }
+    }
+
+    // 실제 비밀번호를 확인하는 함수
+    private fun checkPinAndLogin() {
+        lifecycleScope.launch {
+            val db = AppDatabase.getInstance(this@LoginActivity)
+            val user = db.userDao().getUser() // 저장된 PIN 가져오기
+
+            // 가입된 정보가 있고, 입력한 PIN이 일치할 때만 통과
+            if (user != null && pin.toString() == user.pin) {
+                startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                finish()
+            } else {
+                // 틀렸을 때 실행되는 애니메이션
+                val shake = AnimationUtils.loadAnimation(this@LoginActivity, R.anim.shake)
+                dotsLayout.startAnimation(shake)
+
+                // 햅틱 진동
+                dotsLayout.performHapticFeedback(android.view.HapticFeedbackConstants.LONG_PRESS)
+
+                // 입력 값 초기화
+                pin.setLength(0)
+                updateDots()
+            }
         }
     }
 

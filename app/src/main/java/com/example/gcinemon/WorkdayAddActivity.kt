@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -19,6 +20,9 @@ import com.google.android.material.chip.Chip
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import com.example.gcinemon.data.AppDatabase
+import com.example.gcinemon.data.entity.ScheduleEntity
+import kotlinx.coroutines.launch
 
 class WorkdayAddActivity : AppCompatActivity() {
 
@@ -48,6 +52,16 @@ class WorkdayAddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workday_add)
+
+        val dateKey = intent.getStringExtra("SELECTED_DATE")
+        if (dateKey != null) {
+            val year = dateKey.substring(0, 4).toInt()
+            val month = dateKey.substring(4, 6).toInt() - 1 // Calendar는 0부터 시작
+            val day = dateKey.substring(6, 8).toInt()
+
+            selectedDate.set(year, month, day)
+            selectedDow = selectedDate.get(Calendar.DAY_OF_WEEK)
+        }
 
         findViewById<ImageView>(R.id.btnBack).setOnClickListener {
             finish()
@@ -90,23 +104,38 @@ class WorkdayAddActivity : AppCompatActivity() {
         updateDateTitle()
 
         btnSave.setOnClickListener {
+
             val position = when {
                 chipPosStore.isChecked -> "매점"
                 chipPosTicket.isChecked -> "검표"
-                else -> ""
+                else -> return@setOnClickListener
             }
 
             val workType = when {
-                chipTypeOpen.isChecked -> "오픈 07:00~11:30"
-                chipTypeMiddle.isChecked -> "미들 11:30~18:30"
-                chipTypeClose.isChecked -> "마감 18:30~00:00"
-                else -> ""
+                chipTypeOpen.isChecked -> "오픈"
+                chipTypeMiddle.isChecked -> "미들"
+                chipTypeClose.isChecked -> "마감"
+                else -> return@setOnClickListener
             }
 
-            val memo = edtMemo.text?.toString().orEmpty()
+            val memo = edtMemo.text.toString()
 
-            finish()
-            overridePendingTransition(0, 0)
+            val dateStr = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+                .format(selectedDate.time)
+
+            val schedule = ScheduleEntity(
+                date = dateStr,
+                position = position,
+                workType = workType,
+                memo = memo
+            )
+
+            lifecycleScope.launch {
+                val db = AppDatabase.getInstance(this@WorkdayAddActivity)
+                db.scheduleDao().insertSchedule(schedule)
+
+                finish()
+            }
         }
     }
 
@@ -129,7 +158,7 @@ class WorkdayAddActivity : AppCompatActivity() {
 
         chipTypeOpen.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                showSelectedChip(chipSelectedType, "오픈 07:00~11:30", "#FE6301", "#33FE6301")
+                showSelectedChip(chipSelectedType, "오픈 09:00~15:30", "#FE6301", "#33FE6301")
             } else if (!chipTypeMiddle.isChecked && !chipTypeClose.isChecked) {
                 chipSelectedType.visibility = View.GONE
             }
@@ -145,7 +174,7 @@ class WorkdayAddActivity : AppCompatActivity() {
 
         chipTypeClose.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                showSelectedChip(chipSelectedType, "마감 18:30~00:00", "#0073FF", "#330073FF")
+                showSelectedChip(chipSelectedType, "마감 15:30~22:00", "#0073FF", "#330073FF")
             } else if (!chipTypeOpen.isChecked && !chipTypeMiddle.isChecked) {
                 chipSelectedType.visibility = View.GONE
             }
