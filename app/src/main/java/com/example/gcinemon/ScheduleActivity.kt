@@ -67,14 +67,15 @@ class ScheduleActivity : AppCompatActivity() {
                 selectedKey = day.key
                 adapter.setSelected(day.key)
 
+                // 근무 추가/수정 화면으로 이동
                 val intent = Intent(this, WorkdayAddActivity::class.java).apply {
-                    putExtra("SELECTED_DATE", day.key) // "20260124" 형태 전달
+                    putExtra("SELECTED_DATE", day.key) // yyyyMMdd 형태
                 }
                 startActivity(intent)
                 overridePendingTransition(0, 0)
             },
             onLongClickDay = { day ->
-                // 해당 날짜에 등록된 근무 태그가 있을 때만 삭제 시트를 띄움
+                // 해당 날짜에 근무 태그가 있을 때만 삭제 시트 표시
                 if (day.tags.isNotEmpty()) {
                     showDeleteSheet(day.key)
                 }
@@ -122,16 +123,20 @@ class ScheduleActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val db = AppDatabase.getInstance(this@ScheduleActivity)
+
+            // 해당 월의 근무 스케줄 조회
             val schedules = db.scheduleDao().getLatestSchedulesOfMonth(yearMonth)
 
             val finalWorkTagMap = ScheduleMapper.toWorkTagMap(schedules).toMutableMap()
 
             val holidayManager = com.example.gcinemon.util.HolidayManager(this@ScheduleActivity)
 
+            // 해당 월의 마지막 날짜 계산
             val tempCal = cal.clone() as Calendar
             tempCal.set(Calendar.DAY_OF_MONTH, 1)
             val lastDay = tempCal.getActualMaximum(Calendar.DAY_OF_MONTH)
 
+            // 공휴일 태그 추가
             for (day in 1..lastDay) {
                 val dateKey = String.format(Locale.US, "%04d%02d%02d", year, month, day)
                 val holidayName = holidayManager.getHolidayName(dateKey)
@@ -139,6 +144,7 @@ class ScheduleActivity : AppCompatActivity() {
                 if (holidayName != null) {
                     val tags = finalWorkTagMap[dateKey]?.toMutableList() ?: mutableListOf()
 
+                    // 이미 공휴일 태그가 없다면 추가
                     if (tags.none { it.style == TagStyle.HOLIDAY }) {
                         tags.add(WorkTag(holidayName, TagStyle.HOLIDAY))
                     }
@@ -146,13 +152,16 @@ class ScheduleActivity : AppCompatActivity() {
                 }
             }
 
+            // 달력 셀 데이터 생성
             val days = CalendarDataBuilder.buildMonthCells(year, month, finalWorkTagMap)
             adapter.submit(days)
 
+            // 이전에 선택된 날짜가 있으면 다시 선택 처리
             selectedKey?.let { adapter.setSelected(it) }
         }
     }
 
+    // 다른 화면에서 돌아왔을 때 달력 갱신
     override fun onResume() {
         super.onResume()
         renderMonth()

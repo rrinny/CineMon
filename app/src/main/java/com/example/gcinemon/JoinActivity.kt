@@ -31,7 +31,7 @@ class JoinActivity : AppCompatActivity() {
         btnJoin = findViewById(R.id.btnJoin)
         btnBack = findViewById(R.id.btnBack)
 
-        // 초기 상태
+        // 초기 입력 상태에 따라 가입 버튼 상태 설정
         updateJoinButtonState()
 
         val watcher = object : TextWatcher {
@@ -54,7 +54,7 @@ class JoinActivity : AppCompatActivity() {
 
             lifecycleScope.launch {
                 val db = AppDatabase.getInstance(this@JoinActivity)
-                // 유저 정보 저장
+                // 유저 정보를 DB에 저장
                 db.userDao().insertUser(UserEntity(nickname = nickname, pin = pinValue))
 
                 // 로그인 화면으로 이동

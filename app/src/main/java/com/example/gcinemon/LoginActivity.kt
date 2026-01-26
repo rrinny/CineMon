@@ -14,6 +14,7 @@ import com.example.gcinemon.data.AppDatabase
 
 class LoginActivity : AppCompatActivity() {
 
+    // 사용자가 입력한 PIN 번호를 저장
     private val pin = StringBuilder()
 
     private lateinit var dotsLayout: LinearLayout

@@ -14,8 +14,10 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
+// 홈 화면에 필요한 근무 일정, 남은 시간, 주간 상태를 관리하는 ViewModel
 class HomeViewModel(private val scheduleDao: ScheduleDao) : ViewModel() {
 
+    // 날짜별 캘린더 상태 데이터
     data class DayStatus(
         val date: String,
         val dayNum: String,
@@ -24,16 +26,20 @@ class HomeViewModel(private val scheduleDao: ScheduleDao) : ViewModel() {
         val hasSchedule: Boolean
     )
 
+    // 다음 근무까지 남은 시간 텍스트
     private val _remainingTime = MutableStateFlow("")
     val remainingTime: StateFlow<String> = _remainingTime
 
+    // 가장 가까운 다음 근무 일정
     private val _nextSchedule = MutableStateFlow<ScheduleEntity?>(null)
     val nextSchedule: StateFlow<ScheduleEntity?> = _nextSchedule
 
+    // 주간 캘린더 표시용 날짜 상태 리스트
     private val _weekStatus = MutableStateFlow<List<DayStatus>>(emptyList())
     val weekStatus: StateFlow<List<DayStatus>> = _weekStatus
 
     init {
+        // 다음 근무 일정과 남은 시간 계산
         loadIncomingSchedule()
         loadWeekStatus(java.time.DayOfWeek.MONDAY)
     }
@@ -77,6 +83,7 @@ class HomeViewModel(private val scheduleDao: ScheduleDao) : ViewModel() {
         }
     }
 
+    // 다음 근무 날짜까지 남은 일수 계산
     private fun calculateDayDifference(targetDateStr: String, today: LocalDate) {
         try {
             val targetDate = LocalDate.parse(targetDateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
@@ -92,6 +99,7 @@ class HomeViewModel(private val scheduleDao: ScheduleDao) : ViewModel() {
         }
     }
 
+    // 주간 캘린더용 7일 상태 로드
     fun loadWeekStatus(startDayOfWeek: java.time.DayOfWeek) {
         val today = LocalDate.now()
         // 설정된 요일을 기준으로 가장 가까운 과거 날짜를 계산
@@ -113,6 +121,7 @@ class HomeViewModel(private val scheduleDao: ScheduleDao) : ViewModel() {
         }
     }
 
+    // 다음 근무 + 주간 상태 전체 갱신
     fun refreshAll(startDayOfWeek: java.time.DayOfWeek) {
         loadIncomingSchedule()
         loadWeekStatus(startDayOfWeek)
